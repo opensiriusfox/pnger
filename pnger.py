@@ -4,32 +4,24 @@
 @author - e
 @date   - 9/3/2013
 
-
-
 '''
 import sys
 import argparse
 
-
-
-
 def pngit(infile, outfile, nowrite=0):
 	outcounter = 0
-	with open(outfile, "wb") as theoutf:
-		
+	with open(outfile, "wb") as theoutf:		
 		if nowrite == 0:
         		theoutf.write("\x89\x50\x4E\x47\x0D\x0A\x1A\x0A")
-		
 		with open(infile, "rb") as f:
-		
 			byte = f.read(1)
 			while byte != "":
-		
 				if outcounter >= nowrite:
 					theoutf.write(byte)	
 				else:
 					outcounter+=1
 				
+
 				byte = f.read(1)
 
 def unpngit(infile, outfile):
